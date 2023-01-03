@@ -32,13 +32,7 @@ def sidebar(ygo):
     generate_button = st.sidebar.button(label="Generate")
     
     if generate_button:
-        try_counter = 0
-        while try_counter <= 2:
-            try:
-                ygo.generate_card(description)
-                break
-            except:
-                try_counter += 1
+        ygo.generate_card(description)
 
 
 def page(ygo):
