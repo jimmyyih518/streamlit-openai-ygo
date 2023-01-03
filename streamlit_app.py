@@ -5,14 +5,26 @@ from PIL import Image
 from io import BytesIO
 import base64
 import sys
-sys.path.append('./yugioh/')
+import os
+#sys.path.append('./yugioh/')
 sys.path.append('../')
 
 st.set_page_config(layout="wide", page_title="Yugioh Card Generator")
 
+def validate():
+    files = ['./yugioh/assets/',
+            './yugioh/assets/img/monster_effect.jpg',
+             './yugioh/assets/fonts/ygo_title.ttf',
+             './yugioh/ygo_main.py'
+             ]
+    for f in files:
+        print(f)
+        print(os.path.exists(f))
+
 def main():
+    validate()
     if 'ygo' not in st.session_state:
-        st.session_state['ygo'] = ygo_main(openai)
+        st.session_state['ygo'] = ygo_main(openai, save=False)
     header()
     sidebar(st.session_state.ygo)
     page(st.session_state.ygo)
@@ -24,7 +36,7 @@ def sidebar(ygo):
 
     st.sidebar.write("## Create your card :gear:")
     st.sidebar.markdown("\n")
-    description = st.sidebar.text_input(label="Description", placeholder="""a 6 star effect monster card,
+    description = st.sidebar.text_area(label="Description", placeholder="""a 6 star effect monster card,
                 we want a frozen theme, the main theme effects are to put opponent cards into frozen state,
                 a magic or trap card in frozen state cannot be activated,
                 a monster in frozen state cannot attack""")
