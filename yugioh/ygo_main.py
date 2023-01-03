@@ -11,14 +11,14 @@ description = """a 6 star effect monster card,
 yugioh.generate_card(description)
 yugioh.generate_gameplay()
 '''
-import os.path
+
 import sys
+sys.path.append('./yugioh/')
+sys.path.append('../')
 
 import openai
-import ygo_card
-import ygo_openai
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import yugioh.ygo_card
+import yugioh.ygo_openai
 
 class ygo_main:
     def __init__(self, openai, save=True):
