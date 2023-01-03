@@ -17,8 +17,8 @@ sys.path.append('./yugioh/')
 sys.path.append('../')
 
 import openai
-import yugioh.ygo_card
-import yugioh.ygo_openai
+import yugioh.ygo_card as ygo_card
+import yugioh.ygo_openai as ygo_openai
 
 class ygo_main:
     def __init__(self, openai, save=True):
